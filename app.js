@@ -27,5 +27,17 @@ const app = express();
 
 //routes
 app.get('/Car_Parts', (req, res) => {
-    res.json({mssg: 'welcome to Car_Parts Inventory'});
+    let Car_Parts = []
+
+    db.collection('Car_Parts')
+        .find()
+        .forEach(car => Car_Parts.push(car))
+        .then(() =>{
+            res.status(200).json(Car_Parts);
+        })
+        .catch((err) => {
+             res.status(500).json({mssg:"Could not fetch the documents"});
+         })
+
+    res.json({mssg: 'welcome to the Car Parts Inventory'});
 });
