@@ -10,5 +10,5 @@ app.listen(3000,() => {
 
 //routes
 app.get('/Car_Parts', (req, res) => {
-    res.json({mssg: 'welcome to Car_Parts'});
+    res.json({mssg: 'welcome to Car_Parts Inventory'});
 });
