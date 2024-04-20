@@ -8,6 +8,7 @@ module.exports = {
         MongoClient.connect('mongodb://localhost:27017/VehiclePart_MS')
             .then((client)=>{
                 dbConnection = client.db()
+                console.log("connection established on " + dbConnection)
                 return cb()
             })
             .catch((err)=>{

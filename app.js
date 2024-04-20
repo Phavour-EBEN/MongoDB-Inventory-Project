@@ -39,12 +39,17 @@ app.get('/Car_Parts', (req, res) => {
 //Fetching a single document
 app.get('/Car_Parts/:id', (req, res) => {
     db.collection('Car_Parts')
-        .findOne({_id: (req.params.id)})
+        .findOne({ _id:new  (req.params.id) }) // Remove the 'new' keyword
         .then(doc => {
-            res.status(200).json(doc);  
+            if (doc) {
+                res.status(200).json(doc);  
+            } else {
+                res.status(404).json({ message: "Document not found" });
+            }
         })
         .catch(err => {
-            res.status(500).json({mssg: "Could not fetch the documents"});
+            console.error(err);
+            res.status(500).json({ message: "Could not fetch the document" });
         });
 });
 
@@ -89,12 +94,17 @@ app.get('/Accessories', (req, res) => {
 //Fetching a single document
 app.get('/Accessories/:id', (req, res) => {
     db.collection('Accessories')
-        .findOne({_id: ObjectId (req.params.id)})
+        .findOne({ _id:new ObjectId(req.params.id) }) // Remove the 'new' keyword
         .then(doc => {
-            res.status(200).json(doc);  
+            if (doc) {
+                res.status(200).json(doc);  
+            } else {
+                res.status(404).json({ message: "Document not found" });
+            }
         })
         .catch(err => {
-            res.status(500).json({mssg: "Could not fetch the documents"});
+            console.error(err);
+            res.status(500).json({ message: "Could not fetch the document" });
         });
 });
 
