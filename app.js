@@ -1,7 +1,10 @@
 const express =  require('express')
 const {connectToDb, getDb} = require('./db')
 const {ObjectId}= require('mongodb')
+// init app and middware
+
 const app = express()
+app.use(express.json())
 
 
 // db connection
@@ -20,7 +23,6 @@ connectToDb((err) => {
 
 // db instance  
 
-// init app and middware
 
 
 //routes
@@ -52,6 +54,19 @@ app.get('/Car_Parts/:id', (req, res) => {
             res.status(500).json({ message: "Could not fetch the document" });
         });
 });
+//making a post requst
+app.post('/Car_Parts', (req, res) => {
+    const newCar_Parts = req.body
+    db.collection('Car_Parts')
+        .insertOne(newCar_Parts)
+        .then(result => {
+            res.status(201).json(result);
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ message: "Could not create the document" });
+        });
+})
 
 app.get('/Body_Parts', (req, res) => {
     db.collection('Body_Parts')
