@@ -57,6 +57,10 @@ nav{
     border-radius: 5px;
 
 }
+.nav-links .btn:hover{
+    background: #000;
+    color: #fff;
+}
 
 .content{
     margin-top: 150px;

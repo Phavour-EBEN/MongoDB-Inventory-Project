@@ -39,7 +39,7 @@ app.get('/Car_Parts', (req, res) => {
 //Fetching a single document
 app.get('/Car_Parts/:id', (req, res) => {
     db.collection('Car_Parts')
-        .findOne({ _id: (req.params.id) }) // Remove the 'new' keyword
+        .findOne({ _id:new ObjectId(req.params.id) }) // Remove the 'new' keyword
         .then(doc => {
             if (doc) {
                 res.status(200).json(doc);  
@@ -65,6 +65,21 @@ app.get('/Body_Parts', (req, res) => {
             res.status(500).json({mssg: "Could not fetch the documents"});
         });
 });
+app.get('/Body_Parts/:id', (req, res) => {
+    db.collection('Body_Parts')
+        .findOne({ _id:new ObjectId(req.params.id) }) // Remove the 'new' keyword
+        .then(doc => {
+            if (doc) {
+                res.status(200).json(doc);  
+            } else {
+                res.status(404).json({ message: "Document not found" });
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ message: "Could not fetch the document" });
+        });
+});
 
 app.get('/Motor_Parts', (req, res) => {
     db.collection('Motor_Parts')
@@ -76,6 +91,21 @@ app.get('/Motor_Parts', (req, res) => {
         })
         .catch(() => {
             res.status(500).json({mssg: "Could not fetch the documents"});
+        });
+});
+app.get('/Motor_Parts/:id', (req, res) => {
+    db.collection('Motor_Parts')
+        .findOne({ _id:new ObjectId(req.params.id) }) // Remove the 'new' keyword
+        .then(doc => {
+            if (doc) {
+                res.status(200).json(doc);  
+            } else {
+                res.status(404).json({ message: "Document not found" });
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ message: "Could not fetch the document" });
         });
 });
 
@@ -120,6 +150,21 @@ app.get('/Exhaust_Parts', (req, res) => {
             res.status(500).json({mssg: "Could not fetch the documents"});
         });
 });
+app.get('/Exhaust_Parts/:id', (req, res) => {
+    db.collection('Exhaust_Parts')
+        .findOne({ _id:new ObjectId(req.params.id) }) // Remove the 'new' keyword
+        .then(doc => {
+            if (doc) {
+                res.status(200).json(doc);  
+            } else {
+                res.status(404).json({ message: "Document not found" });
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ message: "Could not fetch the document" });
+        });
+});
 
 app.get('/Suspension_Parts', (req, res) => {
     db.collection('Suspension_Parts')
@@ -133,4 +178,18 @@ app.get('/Suspension_Parts', (req, res) => {
             res.status(500).json({mssg: "Could not fetch the documents"});
         });
 });
-
+app.get('/Suspension_Parts/:id', (req, res) => {
+    db.collection('Suspension_Parts')
+        .findOne({ _id:new ObjectId(req.params.id) }) // Remove the 'new' keyword
+        .then(doc => {
+            if (doc) {
+                res.status(200).json(doc);  
+            } else {
+                res.status(404).json({ message: "Document not found" });
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ message: "Could not fetch the document" });
+        });
+});
