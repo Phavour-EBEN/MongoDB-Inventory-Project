@@ -39,7 +39,7 @@ app.get('/Car_Parts', (req, res) => {
 //Fetching a single document
 app.get('/Car_Parts/:id', (req, res) => {
     db.collection('Car_Parts')
-        .findOne({ _id:new  (req.params.id) }) // Remove the 'new' keyword
+        .findOne({ _id: (req.params.id) }) // Remove the 'new' keyword
         .then(doc => {
             if (doc) {
                 res.status(200).json(doc);  
