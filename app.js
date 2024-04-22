@@ -127,6 +127,24 @@ app.get('/Body_Parts/:id', (req, res) => {
             res.status(500).json({ message: "Could not fetch the document" });
         });
 });
+//delecting a request
+app.delete('/Body_Parts/:id',(req, res) =>{
+    if(ObjectId.isValid(req.params.id)){
+        db.collection('Body_Parts')
+        .deleteOne({ _id:new ObjectId(req.params.id) }) // Remove the 'new' keyword
+        .then(result => {
+            if (result) {
+                res.status(200).json(result);  
+            } else {
+                res.status(404).json({ message: "Document not found" });
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ message: "Not a valid document id" });
+        });
+    }
+})
 
 app.get('/Motor_Parts', (req, res) => {
     db.collection('Motor_Parts')
@@ -167,6 +185,24 @@ app.post('/Motor_Parts', (req, res) => {
             console.error(err);
             res.status(500).json({ message: "Could not create the document" });
         });
+})
+//delecting a request
+app.delete('/Motor_Parts/:id',(req, res) =>{
+    if(ObjectId.isValid(req.params.id)){
+        db.collection('Motor_Parts')
+        .deleteOne({ _id:new ObjectId(req.params.id) }) // Remove the 'new' keyword
+        .then(result => {
+            if (result) {
+                res.status(200).json(result);  
+            } else {
+                res.status(404).json({ message: "Document not found" });
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ message: "Not a valid document id" });
+        });
+    }
 })
 
 app.get('/Accessories', (req, res) => {
@@ -209,6 +245,25 @@ app.post('/Accessories', (req, res) => {
             res.status(500).json({ message: "Could not create the document" });
         });
 })
+//delecting a request
+app.delete('/Accessories/:id',(req, res) =>{
+    if(ObjectId.isValid(req.params.id)){
+        db.collection('Accessories')
+        .deleteOne({ _id:new ObjectId(req.params.id) }) // Remove the 'new' keyword
+        .then(result => {
+            if (result) {
+                res.status(200).json(result);  
+            } else {
+                res.status(404).json({ message: "Document not found" });
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ message: "Not a valid document id" });
+        });
+    }
+})
+
 app.get('/Exhaust_Parts', (req, res) => {
     db.collection('Exhaust_Parts')
         .find()
@@ -248,6 +303,25 @@ app.post('/Exhaust_Parts', (req, res) => {
             res.status(500).json({ message: "Could not create the document" });
         });
 })
+//delecting a request
+app.delete('/Exhaust_Parts/:id',(req, res) =>{
+    if(ObjectId.isValid(req.params.id)){
+        db.collection('Exhaust_Parts')
+        .deleteOne({ _id:new ObjectId(req.params.id) }) // Remove the 'new' keyword
+        .then(result => {
+            if (result) {
+                res.status(200).json(result);  
+            } else {
+                res.status(404).json({ message: "Document not found" });
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ message: "Not a valid document id" });
+        });
+    }
+})
+
 app.get('/Suspension_Parts', (req, res) => {
     db.collection('Suspension_Parts')
         .find()
@@ -287,3 +361,22 @@ app.post('/Suspension_Parts', (req, res) => {
             res.status(500).json({ message: "Could not create the document" });
         });
 })
+//delecting a request
+app.delete('/Suspension_Parts/:id',(req, res) =>{
+    if(ObjectId.isValid(req.params.id)){
+        db.collection('Suspension_Parts')
+        .deleteOne({ _id:new ObjectId(req.params.id) }) // Remove the 'new' keyword
+        .then(result => {
+            if (result) {
+                res.status(200).json(result);  
+            } else {
+                res.status(404).json({ message: "Document not found" });
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ message: "Not a valid document id" });
+        });
+    }
+})
+
