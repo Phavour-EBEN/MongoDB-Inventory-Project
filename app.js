@@ -314,6 +314,23 @@ app.delete('/Accessories/:id',(req, res) =>{
         });
     }
 })
+//updating a request(patch)
+app.patch('/Acessories/:id', (req, res) => {
+    const update = req.body
+    if(ObjectId.isValid(req.params.id)){
+        db.collection('Accessories')
+            .updateOne({ _id: new ObjectId(req.params.id) }, { $set: update })
+            .then(result => {
+                res.status(200).json(result);
+            })
+            .catch(err => {
+                console.error(err);
+                res.status(500).json({ message: "Could not update the document" });
+            });
+    }else{
+        res.status(500).json({ message: "Not a valid document id" });
+    }        
+});
 
 app.get('/Exhaust_Parts', (req, res) => {
     db.collection('Exhaust_Parts')
@@ -372,6 +389,23 @@ app.delete('/Exhaust_Parts/:id',(req, res) =>{
         });
     }
 })
+//updating a request(patch)
+app.patch('/Exhaust_Parts/:id', (req, res) => {
+    const update = req.body
+    if(ObjectId.isValid(req.params.id)){
+        db.collection('Exhaust_Parts')
+            .updateOne({ _id: new ObjectId(req.params.id) }, { $set: update })
+            .then(result => {
+                res.status(200).json(result);
+            })
+            .catch(err => {
+                console.error(err);
+                res.status(500).json({ message: "Could not update the document" });
+            });
+    }else{
+        res.status(500).json({ message: "Not a valid document id" });
+    }        
+});
 
 app.get('/Suspension_Parts', (req, res) => {
     db.collection('Suspension_Parts')
@@ -430,4 +464,21 @@ app.delete('/Suspension_Parts/:id',(req, res) =>{
         });
     }
 })
+//updating a request(patch)
+app.patch('/Suspension_Parts/:id', (req, res) => {
+    const update = req.body
+    if(ObjectId.isValid(req.params.id)){
+        db.collection('Suspension_Parts')
+            .updateOne({ _id: new ObjectId(req.params.id) }, { $set: update })
+            .then(result => {
+                res.status(200).json(result);
+            })
+            .catch(err => {
+                console.error(err);
+                res.status(500).json({ message: "Could not update the document" });
+            });
+    }else{
+        res.status(500).json({ message: "Not a valid document id" });
+    }        
+});
 
