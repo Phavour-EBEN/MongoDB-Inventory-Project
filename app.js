@@ -1,10 +1,16 @@
 const express =  require('express')
 const {connectToDb, getDb} = require('./db')
 const {ObjectId}= require('mongodb')
+// const ui = require('./src/index')
+const pasth = require('path')
+const bcrypt = require('bcrypt')
 // init app and middware
 
 const app = express()
 app.use(express.json())
+
+app.set('view engine', 'ejs')
+app.use(express.static('public'))
 
 
 // db connection
@@ -19,6 +25,9 @@ connectToDb((err) => {
     }
 
 })
+app.get('/', (req, res) => {
+    res.render('index')
+})
 
 
 // db instance  
@@ -26,6 +35,7 @@ connectToDb((err) => {
 
 
 //routes
+
 app.get('/Car_Parts', (req, res) => {
 
     const page = req.query.page || 0
