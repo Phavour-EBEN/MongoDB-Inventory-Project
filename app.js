@@ -163,15 +163,15 @@ app.delete('/Body_Parts/:id',(req, res) =>{
     }
 })
 //updating a request(patch)
-app.patch('Body_Parts/:id', (req, res) => {
+app.patch('/Body_Parts/:id', (req, res) => {
     const update = req.body
     if(ObjectId.isValid(req.params.id)){
         db.collection('Body_Parts')
-            .updateOne({ _id: new ObjectId(req.params.id) }, { $set: update })
-            .then(result => {
+           .updateOne({ _id: new ObjectId(req.params.id) }, { $set: update })
+           .then(result => {
                 res.status(200).json(result);
             })
-            .catch(err => {
+           .catch(err => {
                 console.error(err);
                 res.status(500).json({ message: "Could not update the document" });
             });
@@ -243,11 +243,11 @@ app.patch('/Motor_Parts/:id', (req, res) => {
     const update = req.body
     if(ObjectId.isValid(req.params.id)){
         db.collection('Motor_Parts')
-            .updateOne({ _id: new ObjectId(req.params.id) }, { $set: update })
-            .then(result => {
+           .updateOne({ _id: new ObjectId(req.params.id) }, { $set: update })
+           .then(result => {
                 res.status(200).json(result);
             })
-            .catch(err => {
+           .catch(err => {
                 console.error(err);
                 res.status(500).json({ message: "Could not update the document" });
             });
@@ -315,15 +315,15 @@ app.delete('/Accessories/:id',(req, res) =>{
     }
 })
 //updating a request(patch)
-app.patch('/Acessories/:id', (req, res) => {
+app.patch('/Accessories/:id', (req, res) => {
     const update = req.body
     if(ObjectId.isValid(req.params.id)){
         db.collection('Accessories')
-            .updateOne({ _id: new ObjectId(req.params.id) }, { $set: update })
-            .then(result => {
+           .updateOne({ _id: new ObjectId(req.params.id) }, { $set: update })
+           .then(result => {
                 res.status(200).json(result);
             })
-            .catch(err => {
+           .catch(err => {
                 console.error(err);
                 res.status(500).json({ message: "Could not update the document" });
             });
@@ -394,11 +394,11 @@ app.patch('/Exhaust_Parts/:id', (req, res) => {
     const update = req.body
     if(ObjectId.isValid(req.params.id)){
         db.collection('Exhaust_Parts')
-            .updateOne({ _id: new ObjectId(req.params.id) }, { $set: update })
-            .then(result => {
+          .updateOne({ _id: new ObjectId(req.params.id) }, { $set: update })
+          .then(result => {
                 res.status(200).json(result);
             })
-            .catch(err => {
+          .catch(err => {
                 console.error(err);
                 res.status(500).json({ message: "Could not update the document" });
             });
@@ -469,11 +469,11 @@ app.patch('/Suspension_Parts/:id', (req, res) => {
     const update = req.body
     if(ObjectId.isValid(req.params.id)){
         db.collection('Suspension_Parts')
-            .updateOne({ _id: new ObjectId(req.params.id) }, { $set: update })
-            .then(result => {
+         .updateOne({ _id: new ObjectId(req.params.id) }, { $set: update })
+         .then(result => {
                 res.status(200).json(result);
             })
-            .catch(err => {
+         .catch(err => {
                 console.error(err);
                 res.status(500).json({ message: "Could not update the document" });
             });
