@@ -27,9 +27,15 @@ connectToDb((err) => {
 
 //routes
 app.get('/Car_Parts', (req, res) => {
+
+    const page = req.query.page || 0
+    const perPage = 2
+
     db.collection('Car_Parts')
         .find()
         .sort({_id: 1})
+        .skip(perPage * page)
+        .limit(perPage)
         .toArray()  // Convert the cursor to an array
         .then(Car_Parts => {
             res.status(200).json(Car_Parts);
@@ -104,9 +110,15 @@ app.patch('/Car_Parts/:id', (req, res) => {
 });
 
 app.get('/Body_Parts', (req, res) => {
+
+    const page = req.query.page || 0
+    const perPage = 2
+
     db.collection('Body_Parts')
         .find()
         .sort({_id: 1})
+        .skip(perPage * page)
+        .limit(perPage)
         .toArray()  // Convert the cursor to an array
         .then(Body_Parts => {
             res.status(200).json(Body_Parts);
@@ -181,9 +193,15 @@ app.patch('/Body_Parts/:id', (req, res) => {
 });
 
 app.get('/Motor_Parts', (req, res) => {
+
+    const page = req.query.page || 0
+    const perPage = 2
+
     db.collection('Motor_Parts')
         .find()
         .sort({_id: 1})
+        .skip(perPage * page)
+        .limit(perPage)
         .toArray()  // Convert the cursor to an array
         .then(Motor_Parts => {
             res.status(200).json(Motor_Parts);
@@ -257,9 +275,15 @@ app.patch('/Motor_Parts/:id', (req, res) => {
 });
 
 app.get('/Accessories', (req, res) => {
+
+    const page = req.query.page || 0
+    const perPage = 2
+
     db.collection('Accessories')
         .find()
         .sort({_id: 1})
+        .skip(perPage * page)
+        .limit(perPage)
         .toArray()  // Convert the cursor to an array
         .then(Accessories => {
             res.status(200).json(Accessories);
@@ -333,9 +357,15 @@ app.patch('/Accessories/:id', (req, res) => {
 });
 
 app.get('/Exhaust_Parts', (req, res) => {
+
+    const page = req.query.page || 0
+    const perPage = 2
+
     db.collection('Exhaust_Parts')
         .find()
         .sort({_id: 1})
+        .skip(perPage * page)
+        .limit(perPage)
         .toArray()  // Convert the cursor to an array
         .then(Exhaust_Parts => {
             res.status(200).json(Exhaust_Parts);
@@ -408,9 +438,15 @@ app.patch('/Exhaust_Parts/:id', (req, res) => {
 });
 
 app.get('/Suspension_Parts', (req, res) => {
+
+    const page = req.query.page || 0
+    const perPage = 2
+
     db.collection('Suspension_Parts')
         .find()
         .sort({_id: 1})
+        .skip(perPage * page)
+        .limit(perPage)
         .toArray()  // Convert the cursor to an array
         .then(Suspension_Parts => {
             res.status(200).json(Suspension_Parts);
