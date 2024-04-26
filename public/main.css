@@ -48,6 +48,7 @@ nav{
 .nav-links a:hover{
     padding: 11px;
     background-color: #000 ;
+    border-radius: 7px;
 }
 
 .nav-links .btn{
@@ -64,8 +65,9 @@ nav{
 
 .content{
     margin-top: 150px;
-    margin-left: 150px;
+    margin-left: 200px;
     color: #fff;
+    text-align: center;
 
 }
 
@@ -100,7 +102,7 @@ button{
 .form{
     width: 400px;
     height: 400px;
-    position: absolute;
+    position: relative;
     top: 18%;
     left: 65%;
     background: rgb(32, 31, 31);
@@ -130,10 +132,6 @@ button{
     border-radius: 7px;
 }
 
-.link a{
-    text-decoration: none;
-    color: #000;
-}
 
 .link1{
   text-align: center;

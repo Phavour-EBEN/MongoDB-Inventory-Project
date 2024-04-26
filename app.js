@@ -8,6 +8,7 @@ const bcrypt = require('bcrypt')
 
 const app = express()
 app.use(express.json())
+app.use(express.urlencoded({extended:false}))
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
@@ -28,6 +29,9 @@ connectToDb((err) => {
 app.get('/', (req, res) => {
     res.render('index')
 })
+app.get('/login', (req, res) => {
+    res.render('login')
+})
 
 
 // db instance  
@@ -35,6 +39,16 @@ app.get('/', (req, res) => {
 
 
 //routes
+// user authentication
+// registering a user
+app.post('/login', async (req, res) => {
+    const data = {
+        email: req.body.email,
+        password: req.body.password
+    }
+    const userData = await collection.insertOne(data)
+    console.log(userData)
+})
 
 app.get('/Car_Parts', (req, res) => {
 

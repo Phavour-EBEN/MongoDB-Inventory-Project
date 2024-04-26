@@ -5,11 +5,14 @@
     font-family:'Times New Roman', Times, serif;
 }
 
-body{
-    background: rgba(0, 0, 0, 0.5) url("/An\ HD\ image\ of\ A\ car\ \(4\).jpg") center center no-repeat fixed;
-    background-blend-mode: darken;
+.section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background:url(/An\ hd\ image\ of\ A\ car\ \(1\).jpg);
     background-size: cover;
-    background-position: center;
 
 }
 
@@ -68,6 +71,12 @@ h2{
     color: #fff;
     font-size: 1.2em;
     line-height: 57px;
+}
+a{
+    color: #e38867;
+    text-decoration: none;
+    font-weight: 500; 
+    margin-bottom: 5px;
 }
 button{
     width: 100%;

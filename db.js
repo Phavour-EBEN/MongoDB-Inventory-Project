@@ -1,4 +1,5 @@
 const {MongoClient} = require('mongodb')
+const mongoose = require('mongoose')
 
 let dbConnection 
 
@@ -22,7 +23,26 @@ module.exports = {
         //     });
 
         // });
+        const loginSchema = new mongoose.Schema({
+            email:{
+                type: String,
+                required: true
+            },
+            password:{
+                type: String,
+                required: true
+            }
+        })
+        const collection =new mongoose.model('User',loginSchema);
+
+        
+
     },
+    
     getDb: ()=> dbConnection
     
 }
+
+// collection part
+
+// module.exports = collection;
