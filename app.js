@@ -1,7 +1,7 @@
 const express =  require('express')
 const {connectToDb, getDb} = require('./db')
 const {ObjectId}= require('mongodb')
-// const ui = require('./src/index')
+const collection = require('./db')
 const pasth = require('path')
 const bcrypt = require('bcrypt')
 // init app and middware
@@ -29,8 +29,8 @@ connectToDb((err) => {
 app.get('/', (req, res) => {
     res.render('index')
 })
-app.get('/login', (req, res) => {
-    res.render('login')
+app.get('/index1', (req, res) => {
+    res.render('index1')
 })
 
 
@@ -41,11 +41,18 @@ app.get('/login', (req, res) => {
 //routes
 // user authentication
 // registering a user
-app.post('/login', async (req, res) => {
+app.post('/index1', async (req, res) => {
     const data = {
+        Username: req.body.Usrname,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        confirmPassword:req.body.confirmPassword
     }
+
+    if (data.password!== data.confirmPassword) {
+        return res.status(400).json({ message: 'Passwords do not match' });
+    }
+
     const userData = await collection.insertOne(data)
     console.log(userData)
 })
