@@ -2,11 +2,13 @@ const {MongoClient} = require('mongodb')
 const mongoose = require('mongoose')
 
 let dbConnection 
+let uri = 'mongodb+srv://phavour:phavour123@cluster0.jhkqkgk.mongodb.net/VehiclePart_MS?retryWrites=true&w=majority&appName=Cluster0'
+// let uri = 'mongodb://localhost:27017/VehiclePart_MS'
 
 module.exports = {
 
     connectToDb: (cb)=>{
-        MongoClient.connect('mongodb://localhost:27017/VehiclePart_MS')
+        MongoClient.connect(uri)
             .then((client)=>{
                 dbConnection = client.db()
                 console.log("connection established on " + dbConnection)

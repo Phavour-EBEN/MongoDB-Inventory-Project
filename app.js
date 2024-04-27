@@ -88,7 +88,7 @@ app.get('/Car_Parts/:id', (req, res) => {
 app.post('/Car_Parts', (req, res) => {
     const newCar_Parts = req.body
     db.collection('Car_Parts')
-        .insertOne(newCar_Parts)
+        .insertMany(newCar_Parts)
         .then(result => {
             res.status(201).json(result);
         })
@@ -156,7 +156,7 @@ app.get('/Body_Parts', (req, res) => {
 app.post('/Body_Parts', (req, res) => {
     const newBody_Parts = req.body
     db.collection('Body_Parts')
-        .insertOne(newBody_Parts)
+        .insertMany(newBody_Parts)
         .then(result => {
             res.status(201).json(result);
         })
@@ -254,7 +254,7 @@ app.get('/Motor_Parts/:id', (req, res) => {
 app.post('/Motor_Parts', (req, res) => {
     const newMotor_Parts = req.body
     db.collection('Car_Parts')
-        .insertOne(newMotor_Parts)
+        .insertMany(newMotor_Parts)
         .then(result => {
             res.status(201).json(result);
         })
@@ -336,7 +336,7 @@ app.get('/Accessories/:id', (req, res) => {
 app.post('/Accessories', (req, res) => {
     const newAccessories = req.body
     db.collection('Accessories')
-        .insertOne(newAccessories)
+        .insertMany(newAccessories)
         .then(result => {
             res.status(201).json(result);
         })
@@ -417,7 +417,7 @@ app.get('/Exhaust_Parts/:id', (req, res) => {
 app.post('/Exhaust_Parts', (req, res) => {
     const newExhaust_Parts = req.body
     db.collection('Exhaust_Parts')
-        .insertOne(newExhaust_Parts)
+        .insertMany(newExhaust_Parts)
         .then(result => {
             res.status(201).json(result);
         })
@@ -498,7 +498,7 @@ app.get('/Suspension_Parts/:id', (req, res) => {
 app.post('/Suspension_Parts', (req, res) => {
     const newSuspension_Parts = req.body
     db.collection('Suspension_Parts')
-        .insertOne(newSuspension_Parts)
+        .insertMany(newSuspension_Parts)
         .then(result => {
             res.status(201).json(result);
         })
