@@ -27,10 +27,10 @@ connectToDb((err) => {
 
 })
 app.get('/', (req, res) => {
-    res.render('index')
-})
-app.get('/index1', (req, res) => {
     res.render('index1')
+})
+app.get('/index', (req, res) => {
+    res.render('index')
 })
 
 
@@ -39,7 +39,7 @@ app.get('/index1', (req, res) => {
 
 
 //routes
-// user authentication
+
 // registering a user
 app.post('/index1', async (req, res) => {
     const data = {
@@ -67,6 +67,44 @@ app.post('/index1', async (req, res) => {
         console.error(error);
         res.status(500).json({ message: 'Failed to create user' });
     }
+});
+
+// user authentication
+app.post('/index', async (req, res) => {
+    try{
+        const check = await collection.findOne({email: req.body.email});
+        if(!check){
+            res.status(201).json({ message: 'Username cannot be found' });
+        }
+        if(check.password===req.body.password){
+            res.render('index')
+        }else{
+            res.status(201).json({ message: 'Password is incorrect' });
+        }
+    }catch(error){
+        console.error(error);
+        res.status(500).json({ message: 'Failed to create user' });
+    }
+    
+})
+
+app.get('/users', (req, res) => {
+
+    const page = req.query.page || 0
+    const perPage = 2
+
+    db.collection('users')
+        .find()
+        .sort({_id: 1})
+        .skip(perPage * page)
+        .limit(perPage)
+        .toArray()  // Convert the cursor to an array
+        .then(users => {
+            res.status(200).json(users);
+        })
+        .catch(() => {
+            res.status(500).json({mssg: "Could not fetch the documents"});
+        });
 });
 
 
@@ -273,7 +311,7 @@ app.get('/Motor_Parts/:id', (req, res) => {
 });
 app.post('/Motor_Parts', (req, res) => {
     const newMotor_Parts = req.body
-    db.collection('Car_Parts')
+    db.collection('Motor_Parts')
         .insertMany(newMotor_Parts)
         .then(result => {
             res.status(201).json(result);
