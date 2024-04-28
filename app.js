@@ -1,7 +1,7 @@
 const express =  require('express')
 const {connectToDb, getDb} = require('./db')
 const {ObjectId}= require('mongodb')
-const collection = require('./db')
+const collection = require('./config')
 const pasth = require('path')
 const bcrypt = require('bcrypt')
 // init app and middware
@@ -43,19 +43,32 @@ app.get('/index1', (req, res) => {
 // registering a user
 app.post('/index1', async (req, res) => {
     const data = {
-        Username: req.body.Usrname,
+        Username: req.body.Username,
         email: req.body.email,
         password: req.body.password,
-        confirmPassword:req.body.confirmPassword
-    }
+        confirmPassword: req.body.confirmPassword
+    };
 
-    if (data.password!== data.confirmPassword) {
+    if (data.password !== data.confirmPassword) {
         return res.status(400).json({ message: 'Passwords do not match' });
     }
 
-    const userData = await collection.insertOne(data)
-    console.log(userData)
-})
+    try {
+        const existingUser = await collection.findOne({ Username: data.Username });
+        if(existingUser) {
+            return res.status(400).json({ message: 'Username already exists' });
+        }else {
+            const userData = await collection.insertMany(data);
+            console.log(userData);
+            res.status(201).json({ message: 'User created successfully' });
+        }
+       
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Failed to create user' });
+    }
+});
+
 
 app.get('/Car_Parts', (req, res) => {
 
