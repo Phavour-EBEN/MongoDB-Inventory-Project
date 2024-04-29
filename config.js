@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-let uri = 'mongodb+srv://phavour:phavour123@cluster0.jhkqkgk.mongodb.net/VehiclePart_MS?retryWrites=true&w=majority&appName=Cluster0'
-// let uri = 'mongodb://localhost:27017/VehiclePart_MS'
+// let uri = 'mongodb+srv://phavour:phavour123@cluster0.jhkqkgk.mongodb.net/VehiclePart_MS?retryWrites=true&w=majority&appName=Cluster0'
+let uri = 'mongodb://localhost:27017/VehiclePart_MS'
 
 const connect = mongoose.connect(uri)
 

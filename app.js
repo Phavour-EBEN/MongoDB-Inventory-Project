@@ -58,6 +58,11 @@ app.post('/index1', async (req, res) => {
         if(existingUser) {
             return res.status(400).json({ message: 'Username already exists' });
         }else {
+            //hashing password
+            const saltRounds =10;
+            const hashedpassword = await bcrypt.hash(data.password, saltRounds);
+            data.password = hashedpassword;
+            data.confirmPassword = hashedpassword;
             const userData = await collection.insertMany(data);
             console.log(userData);
             res.status(201).json({ message: 'User created successfully' });
@@ -76,7 +81,8 @@ app.post('/index', async (req, res) => {
         if(!check){
             res.status(201).json({ message: 'Username cannot be found' });
         }
-        if(check.password===req.body.password){
+        const isPasswordMatch = await bcrypt.compare(req.body.password, check.password)
+        if(isPasswordMatch){
             res.render('index')
         }else{
             res.status(201).json({ message: 'Password is incorrect' });
