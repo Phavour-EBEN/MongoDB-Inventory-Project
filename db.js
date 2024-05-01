@@ -17,13 +17,6 @@ module.exports = {
                  console.log(err)
                  return cb(err)
              })
-        // return new Promise((resolve, reject) => {
-        //     MongoClient.connect('mongodb://localhost:27017/VehiclePart_MS', (err, client) => {
-        //         if (err) reject(err);
-        //         resolve(client);
-        //     });
-
-        // });
         
     },
     
